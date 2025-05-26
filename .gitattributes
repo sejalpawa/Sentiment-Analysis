@@ -1,0 +1,3 @@
+*.py text
+*.jpg binary
+*.sh text eol=lf
