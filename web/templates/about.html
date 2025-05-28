@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<!-- Sorce: https://www.w3schools.com/howto/howto_css_about_page.asp -->
+<!-- Sorce: https://miroslawzelent.pl/kurs-html/header-nav-article-section-main-footer/ -->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+
+
+{% endblock %}
+
+{% block content %}
+
+<h2 style="text-align:center">Our Team</h2>
+
+<div class="team">
+  <div class="column">
+    <div class="card">
+      <img src="{{url_for('static', filename='css/img/maciej.png')}}" alt="Maciej" style="width:100%">
+      <div class="box">
+        <h2>Maciej Sokołowski</h2>
+        <p class="title1">CEO</p>
+        <p>Gold Manager</p>
+        <p>manago@sentirew.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="{{url_for('static', filename='css/img/konrad.png')}}" alt="Konrad" style="width:100%">
+      <div class="box">
+        <h2>Konrad Bąchór</h2>
+        <p class="title1">Front-End Developer</p>
+        <p>He made such a nice website</p>
+        <p>front@sentirew.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <img src="{{url_for('static', filename='css/img/kuba.png')}}" alt="Kuba" style="width:100%">
+      <div class="box">
+        <h2>Kuba Herka</h2>
+        <p class="title1">Back-End Developer</p>
+        <p>He was the one who made something work here</p>
+        <p>back@sentirew.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="support">
+    <div class="coffee-container">
+        <p>If you enjoy our work, consider buying us a coffee!</p>
+        <a class="coffee-button" href="https://buymeacoffee.com/" target="_blank">Buy Us Coffee</a>
+    </div>
+
+    <a class="github-button" href="https://github.com/Macsok/Sentiment-Analysis-Application" target="_blank">
+        <img 
+            class="github-icon" 
+            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" 
+            alt="GitHub Logo">
+        Contribute on GitHub
+    </a>  
+    
+</div>
+
+<!-- <div class="socials">
+  <div class="socialdivs">
+      <div class="fb">
+          <i class="icon-facebook"></i>
+      </div>
+      <div class="yt">
+          <i class="icon-youtube-play"></i>
+      </div>
+      <div class="tw">
+          <i class="icon-twitter"></i>
+      </div>
+      <div class="linkedin">
+          <i class="icon-linkedin"></i>
+      </div>
+      <div style="clear:both"></div>
+  </div>
+</div> -->
+
+{% endblock %}
