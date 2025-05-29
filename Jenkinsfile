@@ -1,32 +1,46 @@
-pipeline {
+ pipeline {
     agent any
-
+    environment {
+        DOCKER_HOST_IP = "your-docker-ec2-ip"
+        DOCKER_USER = "ubuntu"
+        DOCKER_APP_DIR = "chat-app"
+    }
     stages {
-        stage('Clone') {
+        stage('Clone Repository') {
             steps {
-                echo 'Cloning repository...'
+                git 'https://github.com/ArunSadalgekar07/devops.git'
             }
         }
-
-        stage('Install Dependencies') {
+        stage('Build Docker Image') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh """
+                    scp -o StrictHostKeyChecking=no -r . ${DOCKER_USER}@${DOCKER_HOST_IP}:${DOCKER_A
+                    ssh -o StrictHostKeyChecking=no ${DOCKER_USER}@${DOCKER_HOST_IP} '
+                        cd ${DOCKER_APP_DIR} &&
+                        docker build -t vite-chat-app .
+                    '
+                """
             }
         }
-
-        stage('Run Tests') {
+        stage('Run Container') {
             steps {
-                echo 'Running tests...'
-                // Add your test command if you have any, e.g.:
-                // sh 'pytest'
+                sh """
+                    ssh ${DOCKER_USER}@${DOCKER_HOST_IP} '
+                        docker rm -f vite-chat-container || true &&
+                        docker run -d -p 3000:3000 --name vite-chat-container vite-chat-app
+                    '
+                """
             }
         }
-
-        stage('Deploy') {
+        stage('Selenium Tests') {
             steps {
-                echo 'Deploying application...'
-                // Add deployment steps here
+                sh """
+                    # Clone test repo or use local test scripts
+                    # Example: run headless Chrome test using Selenium
+                    echo "Running Selenium tests..."
+                    # Place your selenium test command here
+                """
             }
         }
     }
-}
+ }
