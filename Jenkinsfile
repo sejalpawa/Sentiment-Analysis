@@ -3,7 +3,7 @@
     environment {
         DOCKER_HOST_IP = "your-docker-ec2-ip"
         DOCKER_USER = "ubuntu"
-        DOCKER_APP_DIR = "chat-app"
+        DOCKER_APP_DIR = "Sentimet_Analysis"
     }
     stages {
         stage('Clone Repository') {
