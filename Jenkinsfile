@@ -3,7 +3,7 @@
     environment {
         DOCKER_HOST_IP = "16.171.115.248"
         DOCKER_USER = "ubuntu"
-        DOCKER_APP_DIR ="Sentimet_Analysis"
+        DOCKER_APP_DIR ="Sentiment_Analysis"
     }
     stages {
         stage('Clone Repository') {
