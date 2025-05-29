@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Sentiment-Analysis
 =======
+=======
+>>>>>>> 4584a641525eca768fcd3f6e5993f33079e27efc
 # Sentiment Analysing Web Application Project
 This project is a comprehensive web application designed to analyze sentiment from various online sources. It leverages advanced natural language processing (NLP) techniques to determine the sentiment of text data, categorizing it as positive, negative, or neutral. The application can scrape data from multiple platforms, including Amazon for product reviews, Twitter (X) for tweets, and YouTube for video comments, using provided credentials. 
 
@@ -118,4 +121,7 @@ This will launch the web application, and you can access it through your web bro
 
 > [!TIP]
 > Visit `localhost:5000/` to see the results.
+<<<<<<< HEAD
 >>>>>>> 4584a64 (Save local changes)
+=======
+>>>>>>> 4584a641525eca768fcd3f6e5993f33079e27efc
