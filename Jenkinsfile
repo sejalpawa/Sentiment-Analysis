@@ -1,9 +1,9 @@
  pipeline {
     agent any
     environment {
-        DOCKER_HOST_IP = "your-docker-ec2-ip"
+        DOCKER_HOST_IP = "16.171.115.248"
         DOCKER_USER = "ubuntu"
-        DOCKER_APP_DIR = "Sentimet_Analysis"
+        DOCKER_APP_DIR ="Sentimet_Analysis"
     }
     stages {
         stage('Clone Repository') {
