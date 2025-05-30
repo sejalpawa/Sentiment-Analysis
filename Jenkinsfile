@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_HOST_IP = "51.20.143.145"
         DOCKER_USER = "ubuntu"
-        DOCKER_APP_DIR = "Sentiment-Analysis"
+        DOCKER_APP_DIR = "Sentiment_Analysis"
     }
 
     stages {
