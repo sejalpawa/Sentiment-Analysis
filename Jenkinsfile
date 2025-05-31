@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HOST_IP = "51.20.143.145"
+        DOCKER_HOST_IP = "54.196.66.38"
         DOCKER_USER = "ubuntu"
         DOCKER_APP_DIR = "Sentiment-Analysis"
         IMAGE_NAME = "sentiment-analysis-app"
