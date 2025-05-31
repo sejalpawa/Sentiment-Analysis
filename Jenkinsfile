@@ -18,38 +18,34 @@ pipeline {
 
         stage('Copy to Remote & Build Docker Image') {
             steps {
-                sh '''
-                    echo "Copying files to remote host..."
-                    scp -o StrictHostKeyChecking=no -r . ${DOCKER_USER}@${DOCKER_HOST_IP}:${DOCKER_APP_DIR}
+                bat """
+                    echo Copying files to remote host...
+                    pscp -r -pw YOUR_PASSWORD * %DOCKER_USER%@%DOCKER_HOST_IP%:/home/%DOCKER_USER%/%DOCKER_APP_DIR%
 
-                    echo "Building Docker image on remote host..."
-                    ssh -o StrictHostKeyChecking=no ${DOCKER_USER}@${DOCKER_HOST_IP} '
-                        cd ${DOCKER_APP_DIR} &&
-                        docker build -t ${IMAGE_NAME} .
-                    '
-                '''
+                    echo Building Docker image on remote host...
+                    plink -pw YOUR_PASSWORD %DOCKER_USER%@%DOCKER_HOST_IP% ^
+                        "cd %DOCKER_APP_DIR% && docker build -t %IMAGE_NAME% ."
+                """
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh '''
-                    echo "Running Docker container on remote host..."
-                    ssh -o StrictHostKeyChecking=no ${DOCKER_USER}@${DOCKER_HOST_IP} '
-                        docker rm -f ${CONTAINER_NAME} || true &&
-                        docker run -d -p 3000:3000 --name ${CONTAINER_NAME} ${IMAGE_NAME}
-                    '
-                '''
+                bat """
+                    echo Running Docker container on remote host...
+                    plink -pw YOUR_PASSWORD %DOCKER_USER%@%DOCKER_HOST_IP% ^
+                        "docker rm -f %CONTAINER_NAME% || true && docker run -d -p 3000:3000 --name %CONTAINER_NAME% %IMAGE_NAME%"
+                """
             }
         }
 
         stage('Selenium Tests') {
             steps {
-                sh '''
-                    echo "Running Selenium tests..."
-                    # Add your Selenium test commands here
-                    # e.g., python3 -m unittest test_app.py
-                '''
+                bat """
+                    echo Running Selenium tests...
+                    REM Add your Windows-based Selenium test commands here
+                    REM Example: python -m unittest test_app.py
+                """
             }
         }
     }
