@@ -20,6 +20,10 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ec2-ssh-key', keyFileVariable: 'KEY')]) {
                     bat """
+                    REM Fix SSH private key permissions
+                    icacls "%KEY%" /inheritance:r
+                    icacls "%KEY%" /grant:r "%USERNAME%:R"
+
                     ssh -i %KEY% -o StrictHostKeyChecking=no %DOCKER_USER%@%DOCKER_HOST_IP% "rmdir /s /q %DOCKER_APP_DIR% & mkdir %DOCKER_APP_DIR%"
                     scp -i %KEY% -o StrictHostKeyChecking=no -r * %DOCKER_USER%@%DOCKER_HOST_IP%:%DOCKER_APP_DIR%/
                     """
@@ -31,6 +35,10 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ec2-ssh-key', keyFileVariable: 'KEY')]) {
                     bat """
+                    REM Fix SSH private key permissions
+                    icacls "%KEY%" /inheritance:r
+                    icacls "%KEY%" /grant:r "%USERNAME%:R"
+
                     ssh -i %KEY% -o StrictHostKeyChecking=no %DOCKER_USER%@%DOCKER_HOST_IP% "cd %DOCKER_APP_DIR% && docker build -t %IMAGE_NAME% ."
                     """
                 }
@@ -41,6 +49,10 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ec2-ssh-key', keyFileVariable: 'KEY')]) {
                     bat """
+                    REM Fix SSH private key permissions
+                    icacls "%KEY%" /inheritance:r
+                    icacls "%KEY%" /grant:r "%USERNAME%:R"
+
                     ssh -i %KEY% -o StrictHostKeyChecking=no %DOCKER_USER%@%DOCKER_HOST_IP% "docker rm -f %CONTAINER_NAME% || exit 0 && docker run -d -p 3000:3000 --name %CONTAINER_NAME% %IMAGE_NAME%"
                     """
                 }
