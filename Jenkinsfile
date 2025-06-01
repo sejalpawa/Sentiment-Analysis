@@ -5,8 +5,8 @@ pipeline {
         DOCKER_HOST_IP = "52.91.69.5"
         DOCKER_USER = "ubuntu"
         DOCKER_APP_DIR = "Sentiment-Analysis"
-        IMAGE_NAME = "sentiment-analysis-app"
-        CONTAINER_NAME = "sentiment-analysis-container"
+        IMAGE_NAME = "sentiment-analysis-node"   
+        CONTAINER_NAME = "sentiment-app"          
     }
 
     stages {
