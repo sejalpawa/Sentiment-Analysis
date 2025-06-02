@@ -1,18 +1,25 @@
-# Use Node.js base image
-FROM node:18
+# Use Python base image
+FROM python:3.11
 
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy package files and install dependencies
-COPY package*.json ./
-RUN npm install
+# Copy Python requirements and install
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install Node.js and Playwright for scraping
+RUN apt-get update && \
+    apt-get install -y nodejs npm && \
+    npm install -g npm@latest && \
+    npm install playwright && \
+    npx playwright install firefox
 
 # Copy the rest of your app source code
 COPY . .
 
-# Expose the port your app runs on (adjust if needed)
+# Expose the port your Flask app runs on (adjust if needed)
 EXPOSE 3000
 
-# Start the application
-CMD ["python3", "run.py"]
+# Start the Flask application
+CMD ["python", "run.py"]
