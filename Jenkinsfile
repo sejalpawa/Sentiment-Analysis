@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_HOST_IP = "44.218.245.222"   // Update if different
         DOCKER_USER = "ubuntu"
-        DOCKER_APP_DIR = "Sentiment-Analysis"
+        DOCKER_APP_DIR = "Sentiment_Analysis"
         IMAGE_NAME = "sentiment-analysis-node"
         CONTAINER_NAME = "sentiment-app"
     }
@@ -20,8 +20,6 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ec2-ssh-key', keyFileVariable: 'KEY')]) {
                     sh """
-                        chmod 400 \$KEY
-
                         echo "Preparing remote directory..."
                         ssh -i \$KEY -o StrictHostKeyChecking=no ${DOCKER_USER}@${DOCKER_HOST_IP} '
                             rm -rf ${DOCKER_APP_DIR} && mkdir -p ${DOCKER_APP_DIR}
