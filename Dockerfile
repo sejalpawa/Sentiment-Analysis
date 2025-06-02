@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3000
 
 # Start the application
-CMD ["node", "run.py"]
+CMD ["python3", "run.py"]
