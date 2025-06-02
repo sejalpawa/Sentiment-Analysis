@@ -47,7 +47,7 @@ pipeline {
                         echo "Running Docker container..."
                         ssh -i \$KEY -o StrictHostKeyChecking=no ${DOCKER_USER}@${DOCKER_HOST_IP} '
                             docker rm -f ${CONTAINER_NAME} || true &&
-                            docker run -d -p 3000:3000 --name ${CONTAINER_NAME} ${IMAGE_NAME}
+                            docker run -d -p 5000:5000 --name ${CONTAINER_NAME} ${IMAGE_NAME}
                         '
                     """
                 }
