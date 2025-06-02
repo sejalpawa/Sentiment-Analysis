@@ -1,0 +1,20 @@
+{
+  "name": "sentiment-analysis-application",
+  "version": "1.0.0",
+  "description": "This project is a comprehensive web application designed to analyze sentiment from various online sources. It leverages advanced natural language processing (NLP) techniques to determine the sentiment of text data, categorizing it as positive, negative, or neutral. The application can scrape data from multiple platforms, including Amazon for product reviews, Twitter (X) for tweets, and YouTube for video comments, using provided credentials.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Macsok/Sentiment-Analysis-Application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Macsok/Sentiment-Analysis-Application/issues"
+  },
+  "homepage": "https://github.com/Macsok/Sentiment-Analysis-Application#readme"
+}
