@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, Response, jsonify
+from prometheus_flask_exporter import PrometheusMetrics
 import sys
 import os
 import time
@@ -11,7 +12,7 @@ import scraperYT
 
 app = Flask(__name__)
 
-
+metrics = PrometheusMetrics(app)
 @app.route("/web/static")
 @app.route("/home")
 @app.route("/")
