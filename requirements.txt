@@ -8,3 +8,4 @@ typing==3.7.4.3
 simplejson==3.19.3
 pandas==2.2.2
 prometheus-flask-exporter==0.21.4
+requests==2.31.0
